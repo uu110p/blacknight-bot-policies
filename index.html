@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackNight Bot | الشروط والخصوصية</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: #0f1117;
+    color: #dcdde1;
+    line-height: 1.8;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 950px;
+    margin: 40px auto;
+    background: #161922;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    border: 1px solid #232735;
+  }
+
+  /* ====== Header ====== */
+  .header {
+    text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #5865F2;
+    margin-bottom: 25px;
+  }
+  .header h1 {
+    color: #5865F2;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: #8892a0;
+    font-size: 14px;
+  }
+  .badge {
+    display: inline-block;
+    background: #5865F2;
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  /* ====== Tabs ====== */
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #232735;
+    padding-bottom: 0;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: transparent;
+    color: #8892a0;
+    border: none;
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    border-radius: 8px 8px 0 0;
+  }
+  .tab-btn:hover {
+    color: #fff;
+    background: #1e2230;
+  }
+  .tab-btn.active {
+    color: #fff;
+    border-bottom-color: #5865F2;
+    background: #1e2230;
+  }
+  .tab-btn[data-tab="privacy"].active {
+    border-bottom-color: #57F287;
+  }
+
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ====== Content ====== */
+  h2 {
+    color: #fff;
+    font-size: 19px;
+    margin: 28px 0 12px;
+    padding-right: 12px;
+    border-right: 4px solid #5865F2;
+  }
+  .privacy-section h2 {
+    border-right-color: #57F287;
+  }
+  p, li {
+    color: #b9bfcc;
+    font-size: 15px;
+  }
+  ul, ol {
+    padding-right: 25px;
+    margin: 10px 0;
+  }
+  li { margin-bottom: 8px; }
+  code {
+    background: #232735;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #57F287;
+    font-family: 'Consolas', monospace;
+  }
+  a { color: #5865F2; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .privacy-section a { color: #57F287; }
+
+  .highlight {
+    background: #1e2230;
+    border-right: 4px solid #faa61a;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .highlight-green {
+    background: #1e2a24;
+    border-right: 4px solid #57F287;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .danger {
+    background: #2a1a1e;
+    border-right: 4px solid #ed4245;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+
+  /* ====== Table ====== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #1a1d28;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 12px 16px;
+    text-align: right;
+    border-bottom: 1px solid #232735;
+    font-size: 14px;
+  }
+  th {
+    background: #57F287;
+    color: #000;
+    font-weight: 700;
+  }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #1e2230; }
+
+  /* ====== Language Switch ====== */
+  .lang-switch {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .lang-switch button {
+    background: #232735;
+    color: #b9bfcc;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .lang-switch button.active {
+    background: #5865F2;
+    color: #fff;
+  }
+  .lang-switch button:hover {
+    background: #2d3344;
+  }
+  .lang-switch button.active:hover {
+    background: #4752c4;
+  }
+
+  /* English mode */
+  body.lang-en .header,
+  body.lang-en h2,
+  body.lang-en p,
+  body.lang-en ul,
+  body.lang-en ol,
+  body.lang-en .highlight,
+  body.lang-en .highlight-green,
+  body.lang-en .danger,
+  body.lang-en table {
+    direction: ltr;
+    text-align: left;
+  }
+  body.lang-en h2 {
+    padding-right: 0;
+    padding-left: 12px;
+    border-right: none;
+    border-left: 4px solid #5865F2;
+  }
+  body.lang-en .privacy-section h2 {
+    border-left-color: #57F287;
+  }
+  body.lang-en .highlight,
+  body.lang-en .highlight-green,
+  body.lang-en .danger {
+    border-right: none;
+    border-left: 4px solid #faa61a;
+  }
+  body.lang-en .highlight-green { border-left-color: #57F287; }
+  body.lang-en .danger { border-left-color: #ed4245; }
+  body.lang-en th, body.lang-en td { text-align: left; }
+  body.lang-en ul, body.lang-en ol { padding-left: 25px; padding-right: 0; }
+
+  .en-only { display: none; }
+  body.lang-en .ar-only { display: none; }
+  body.lang-en .en-only { display: block; }
+
+  /* ====== Footer ====== */
+  .footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #232735;
+    text-align: center;
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  /* ====== Mobile ====== */
+  @media (max-width: 600px) {
+    .container { padding: 25px 18px; }
+    .header h1 { font-size: 22px; }
+    .tab-btn { padding: 10px 14px; font-size: 13px; }
+    th, td { padding: 8px 10px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ====== Language Switch ====== -->
+  <div class="lang-switch">
+    <button id="btn-ar" class="active" onclick="setLang('ar')">العربية</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- ====== Header ====== -->
+  <div class="header">
+    <h1>
+      <span class="ar-only">شروط الخدمة وسياسة الخصوصية</span>
+      <span class="en-only">Terms of Service & Privacy Policy</span>
+    </h1>
+    <p>BlackNight Bot</p>
+    <span class="badge">
+      <span class="ar-only">آخر تحديث: أكتوبر 2025</span>
+      <span class="en-only">Last Updated: October 2025</span>
+    </span>
+  </div>
+
+  <!-- ====== Tabs ====== -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="terms" onclick="switchTab('terms')">
+      <span class="ar-only">📜 شروط الخدمة</span>
+      <span class="en-only">📜 Terms of Service</span>
+    </button>
+    <button class="tab-btn" data-tab="privacy" onclick="switchTab('privacy')">
+      <span class="ar-only">🔒 سياسة الخصوصية</span>
+      <span class="en-only">🔒 Privacy Policy</span>
+    </button>
+  </div>
+
+  <!-- ==================================================== -->
+  <!-- =============== TERMS OF SERVICE =================== -->
+  <!-- ==================================================== -->
+  <div id="tab-terms" class="tab-content active">
+
+    <h2><span class="ar-only">1. مقدمة</span><span class="en-only">1. Introduction</span></h2>
+    <p class="ar-only">
+      مرحباً بك في بوت <strong>BlackNight</strong> ("البوت"، "نحن"، "الخدمة"). باستخدامك للبوت أو التفاعل معه
+      عبر منصة Discord، فإنك توافق على الالتزام بشروط الخدمة هذه بالكامل. إذا كنت لا توافق على أي بند من
+      هذه الشروط، يُرجى التوقف عن استخدام البوت فوراً.
+    </p>
+    <p class="en-only">
+      Welcome to the <strong>BlackNight</strong> bot ("the Bot", "we", "our"). By using or
+      interacting with this Bot on Discord, you agree to be bound by these Terms of Service.
+      If you do not agree with any part of these terms, please stop using the Bot immediately.
+    </p>
+
+    <h2><span class="ar-only">2. وصف الخدمة</span><span class="en-only">2. Service Description</span></h2>
+    <p class="ar-only">البوت هو تطبيق Discord مخصص لإدارة عملية التقديم على تصاريح الدخول لسيرفر <strong>BlackNight</strong>، ويشمل:</p>
+    <p class="en-only">The Bot is a Discord application designed to manage the whitelist application process for <strong>BlackNight</strong> server, including:</p>
+    <ul class="ar-only">
+      <li>نظام تقديم تفاعلي عبر الأسئلة والأزرار في الرسائل الخاصة.</li>
+      <li>التحقق التلقائي من حسابات Roblox عبر الـ API الرسمي.</li>
+      <li>التحقق من عضوية المستخدم في مجموعة Roblox الرسمية.</li>
+      <li>التحقق من عمر الحساب (60 يوماً على الأقل).</li>
+      <li>نظام بلاك ليست (Blacklist) لمنع الحسابات المرفوضة.</li>
+      <li>نظام طابور (Queue) لتنظيم عمليات المراجعة.</li>
+      <li>إصدار هوية رقمية ومنح الرتب تلقائياً للمقبولين.</li>
+      <li>أرشفة نتائج التقديم في قنوات سجل مخصصة.</li>
+    </ul>
+    <ul class="en-only">
+      <li>Interactive application flow via DMs using questions, buttons, and menus.</li>
+      <li>Automatic Roblox account verification through the official API.</li>
+      <li>Verification of membership in the official Roblox group.</li>
+      <li>Account age verification (minimum 60 days).</li>
+      <li>Blacklist system to block rejected accounts.</li>
+      <li>Queue system to organize reviews.</li>
+      <li>Automatic ID assignment and role granting for approved members.</li>
+      <li>Archiving of application results in designated log channels.</li>
+    </ul>
+
+    <h2><span class="ar-only">3. شروط الاستخدام</span><span class="en-only">3. Terms of Use</span></h2>
+    <p class="ar-only">باستخدامك للبوت، تُقر وتتعهد بـ:</p>
+    <p class="en-only">By using the Bot, you confirm and agree that you will:</p>
+    <ol class="ar-only">
+      <li>أن تكون بعمر 13 عاماً على الأقل (أو السن القانوني في بلدك).</li>
+      <li>تقديم معلومات صحيحة ودقيقة عند التقديم (الاسم، حساب Roblox، العمر).</li>
+      <li>عدم انتحال شخصية أي شخص آخر أو استخدام حسابات Roblox ليست ملكك.</li>
+      <li>عدم محاولة استغلال البوت أو ثغراته أو التلاعب بنظام التقديم.</li>
+      <li>عدم إرسال محتوى مسيء أو مخالف أثناء عملية التقديم.</li>
+      <li>الالتزام بقوانين Discord وقوانين سيرفر BlackNight.</li>
+    </ol>
+    <ol class="en-only">
+      <li>Be at least 13 years old (or the legal age in your country).</li>
+      <li>Provide accurate information during application (name, Roblox account, age).</li>
+      <li>Not impersonate anyone or use Roblox accounts that are not yours.</li>
+      <li>Not attempt to exploit the Bot, its bugs, or manipulate the application system.</li>
+      <li>Not send abusive or offensive content during the application process.</li>
+      <li>Comply with Discord's Terms of Service and BlackNight server rules.</li>
+    </ol>
+
+    <h2><span class="ar-only">4. الاستخدام المحظور</span><span class="en-only">4. Prohibited Use</span></h2>
+    <div class="danger">
+      <strong class="ar-only">⚠️ يُمنع تماماً:</strong>
+      <strong class="en-only">⚠️ Strictly Prohibited:</strong>
+      <ul class="ar-only">
+        <li>استخدام البوت لأي غرض غير قانوني.</li>
+        <li>محاولة اختراق البوت أو استغلال الأخطاء البرمجية (Bugs).</li>
+        <li>إرسال سكربتات أو أوامر آلية (Spam / Botting) للتفاعل مع البوت.</li>
+        <li>استخدام البوت للإضرار بالسيرفر أو أعضائه.</li>
+      </ul>
+      <ul class="en-only">
+        <li>Using the Bot for any illegal purpose.</li>
+        <li>Attempting to hack or exploit the Bot.</li>
+        <li>Sending automated scripts or commands (spam / botting).</li>
+        <li>Using the Bot to harm the server or its members.</li>
+      </ul>
+      <p class="ar-only">أي مخالفة تؤدي إلى <strong>حظر فوري ودائم</strong> من استخدام البوت وسيرفر BlackNight.</p>
+      <p class="en-only">Any violation will result in an <strong>immediate and permanent ban</strong>.</p>
+    </div>
+
+    <h2><span class="ar-only">5. حدود المسؤولية</span><span class="en-only">5. Limitation of Liability</span></h2>
+    <p class="ar-only">
+      يُقدَّم البوت "كما هو" (As-Is). لا نضمن استمرارية عمله أو خلوّه من الأخطاء. فريق BlackNight
+      غير مسؤول عن أي أضرار مباشرة أو غير مباشرة تنشأ عن استخدام البوت، بما في ذلك فقدان البيانات
+      أو انقطاع الخدمة.
+    </p>
+    <p class="en-only">
+      The Bot is provided "As-Is". We do not guarantee continuous operation or freedom from bugs.
+      The BlackNight team is not responsible for any direct or indirect damages arising from the
+      use of the Bot, including data loss or service interruption.
+    </p>
+
+    <h2><span class="ar-only">6. تعديل الخدمة</span><span class="en-only">6. Service Modification</span></h2>
+    <p class="ar-only">
+      نحتفظ بالحق في تعديل أو إيقاف أو إلغاء أي جزء من البوت في أي وقت دون إشعار مسبق، بما في ذلك
+      تغيير شروط التقديم أو معايير القبول.
+    </p>
+    <p class="en-only">
+      We reserve the right to modify, suspend, or discontinue any part of the Bot at any time
+      without prior notice, including changes to application requirements.
+    </p>
+
+    <h2><span class="ar-only">7. تعديل الشروط</span><span class="en-only">7. Changes to Terms</span></h2>
+    <p class="ar-only">
+      قد نحدّث شروط الخدمة هذه من وقت لآخر. سيتم نشر أي تعديلات جوهرية على هذه الصفحة مع تحديث
+      تاريخ "آخر تحديث" أعلى الصفحة. استمرارك في استخدام البوت بعد التعديلات يُعد موافقة ضمنية عليها.
+    </p>
+    <p class="en-only">
+      We may update these Terms from time to time. Material changes will be posted on this page
+      with an updated "Last Updated" date. Continued use of the Bot constitutes acceptance.
+    </p>
+
+    <h2><span class="ar-only">8. إنهاء الخدمة</span><span class="en-only">8. Termination</span></h2>
+    <p class="ar-only">
+      نحتفظ بالحق في رفض أو إيقاف أو إلغاء وصولك إلى البوت أو السيرفر في أي وقت، دون إبداء أسباب،
+      خاصةً في حالة مخالفة هذه الشروط.
+    </p>
+    <p class="en-only">
+      We reserve the right to refuse, suspend, or terminate your access to the Bot or server at
+      any time, without cause, especially in case of a violation of these Terms.
+    </p>
+
+    <h2><span class="ar-only">9. القانون الحاكم</span><span class="en-only">9. Governing Law</span></h2>
+    <p class="ar-only">
+      تخضع هذه الشروط وتُفسَّر وفقاً للقوانين المعمول بها في بلد تشغيل السيرفر، وأي نزاع ينشأ عن
+      استخدام البوت يُحل ودياً بين الطرفين.
+    </p>
+    <p class="en-only">
+      These Terms are governed by the laws of the country where the server operates. Any dispute
+      arising from the use of the Bot shall be resolved amicably between the parties.
+    </p>
+
+    <h2><span class="ar-only">10. التواصل</span><span class="en-only">10. Contact</span></h2>
+    <p class="ar-only">
+      لأي استفسار بخصوص شروط الخدمة، يُرجى التواصل مع فريق الإدارة عبر سيرفر Discord الرسمي:
+    </p>
+    <p class="en-only">
+      For inquiries about these Terms, please contact the staff team on the official Discord server:
+    </p>
+    <p><a href="https://discord.gg/blacknight" target="_blank">https://discord.gg/blacknight</a></p>
+
+  </div>
+  <!-- =============== END TERMS =================== -->
+
+
+  <!-- ==================================================== -->
+  <!-- =============== PRIVACY POLICY ===================== -->
+  <!-- ==================================================== -->
+  <div id="tab-privacy" class="tab-content privacy-section">
+
+    <h2><span class="ar-only">1. مقدمة</span><span class="en-only">1. Introduction</span></h2>
+    <p class="ar-only">
+      نحن في بوت <strong>BlackNight</strong> نأخذ خصوصيتك على محمل الجد. توضح سياسة الخصوصية هذه
+      أنواع البيانات التي نجمعها، وكيفية استخدامها، وحقوقك فيما يتعلق بها. باستخدامك للبوت،
+      فإنك توافق على الممارسات الموضحة أدناه.
+    </p>
+    <p class="en-only">
+      At <strong>BlackNight</strong> Bot, we take your privacy seriously. This Privacy Policy
+      explains what data we collect, how we use it, and your rights. By using the Bot, you agree
+      to the practices described below.
+    </p>
+
+    <h2><span class="ar-only">2. البيانات التي نجمعها</span><span class="en-only">2. Data We Collect</span></h2>
+    <p class="ar-only">عند تفاعلك مع البوت، قد نقوم بجمع وحفظ البيانات التالية:</p>
+    <p class="en-only">When you interact with the Bot, we may collect and store the following:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th><span class="ar-only">نوع البيانات</span><span class="en-only">Data Type</span></th>
+          <th><span class="ar-only">الوصف</span><span class="en-only">Description</span></th>
+          <th><span class="ar-only">الغرض</span><span class="en-only">Purpose</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="ar-only">Discord User ID</span><span class="en-only">Discord User ID</span></td>
+          <td><span class="ar-only">معرّف حسابك في Discord</span><span class="en-only">Your Discord account identifier</span></td>
+          <td><span class="ar-only">التحقق من الهوية، منح الرتب، التواصل</span><span class="en-only">Verification, role assignment, communication</span></td>
+        </tr>
+        <tr>
+          <td><span class="ar-only">Roblox Username</span><span class="en-only">Roblox Username</span></td>
+          <td><span class="ar-only">اسم حسابك في Roblox الذي تدخله</span><span class="en-only">Roblox username you provide</span></td>
+          <td><span class="ar-only">التحقق من الحساب والعضوية</span><span class="en-only">Account and group verification</span></td>
+        </tr>
+        <tr>
+          <td><span class="ar-only">Roblox User ID</span><span class="en-only">Roblox User ID</span></td>
+          <td><span class="ar-only">معرّف حسابك في Roblox (يُجلب من API)</span><span class="en-only">Roblox ID (fetched from API)</span></td>
+          <td><span class="ar-only">ربط الحساب، منع التكرار</span><span class="en-only">Account linking, duplicate prevention</span></td>
+        </tr>
+        <tr>
+          <td><span class="ar-only">الاسم الحقيقي</span><span class="en-only">Real Name</span></td>
+          <td><span class="ar-only">الاسم الذي تكتبه في التقديم</span><span class="en-only">Name you provide during application</span></td>
+          <td><span class="ar-only">التحقق من جدية الطلب، الأرشيف</span><span class="en-only">Seriousness check, archive</span></td>
+        </tr>
+        <tr>
+          <td><span class="ar-only">العمر المذكور</span><span class="en-only">Stated Age</span></td>
+          <td><span class="ar-only">العمر الذي تدخله في التقديم</span><span class="en-only">Age you provide</span></td>
+          <td><span class="ar-only">التحقق من الأهلية</span><span class="en-only">Eligibility check</span></td>
+        </tr>
+        <tr>
+          <td><span class="ar-only">إجابات الأسئلة</span><span class="en-only">Quiz Answers</span></td>
+          <td><span class="ar-only">إجاباتك على أسئلة القوانين والمخالفات</span><span class="en-only">Your answers to rules questions</span></td>
+          <td><span class="ar-only">تقييم الأهلية للتصريح</span><span class="en-only">Whitelist eligibility</span></td>
+        </tr>
+        <tr>
+          <td><span class="ar-only">نص الحلف</span><span class="en-only">Oath Text</span></td>
+          <td><span class="ar-only">الحلف الذي تكتبه بنفسك</span><span class="en-only">Oath you write yourself</span></td>
+          <td><span class="ar-only">الالتزام، الأرشيف</span><span class="en-only">Commitment, archive</span></td>
+        </tr>
+        <tr>
+          <td><span class="ar-only">سبب الانضمام والمصدر</span><span class="en-only">Join Reason & Source</span></td>
+          <td><span class="ar-only">سبب رغبتك وكيف عرفت السيرفر</span><span class="en-only">Your reason and how you found us</span></td>
+          <td><span class="ar-only">تحليل التسويق، الأرشيف</span><span class="en-only">Analytics, archive</span></td>
+        </tr>
+        <tr>
+          <td><span class="ar-only">Discord Nickname</span><span class="en-only">Discord Nickname</span></td>
+          <td><span class="ar-only">اسمك المستعار في السيرفر</span><span class="en-only">Your server nickname</span></td>
+          <td><span class="ar-only">استخراج اسم Roblox، تحديث الكاش</span><span class="en-only">Extract Roblox name, update cache</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2><span class="ar-only">3. كيف نجمع البيانات</span><span class="en-only">3. How We Collect Data</span></h2>
+    <ul class="ar-only">
+      <li><strong>مباشرة منك:</strong> عندما تكتب في الخاص (DM) للبوت أو تستخدم الأزرار والقوائم.</li>
+      <li><strong>من Discord API:</strong> عند جلب معلومات العضو (Nickname, Roles, ID).</li>
+      <li><strong>من Roblox API:</strong> عند التحقق من حسابك (Username, UserID, Groups, Account Age, Avatar).</li>
+      <li><strong>من الملفات المحلية:</strong> تخزين مؤقت في ملفات JSON على سيرفر البوت.</li>
+    </ul>
+    <ul class="en-only">
+      <li><strong>Directly from you:</strong> via DMs, buttons, and menus.</li>
+      <li><strong>From Discord API:</strong> member info (nickname, roles, ID).</li>
+      <li><strong>From Roblox API:</strong> account info (username, ID, groups, age, avatar).</li>
+      <li><strong>From local files:</strong> cached in JSON files on the bot's server.</li>
+    </ul>
+
+    <h2><span class="ar-only">4. كيف نستخدم البيانات</span><span class="en-only">4. How We Use Data</span></h2>
+    <ul class="ar-only">
+      <li>التحقق من أهليتك للحصول على تصريح سيرفر BlackNight.</li>
+      <li>التحقق من عضوية حسابك في مجموعة Roblox الرسمية.</li>
+      <li>التحقق من عمر حسابك (60 يوماً على الأقل).</li>
+      <li>منع الحسابات المكررة أو المرفوضة (Blacklist).</li>
+      <li>إصدار هويتك الرقمية ومنحك الرتب المناسبة.</li>
+      <li>أرشفة نتائج التقديم في قنوات السجل لأغراض إدارية.</li>
+      <li>تحسين جودة الخدمة ومعالجة الأخطاء.</li>
+    </ul>
+    <ul class="en-only">
+      <li>Verify your eligibility for BlackNight whitelist.</li>
+      <li>Verify membership in the official Roblox group.</li>
+      <li>Verify account age (minimum 60 days).</li>
+      <li>Prevent duplicate or blacklisted accounts.</li>
+      <li>Issue your digital ID and assign roles.</li>
+      <li>Archive application results for administrative purposes.</li>
+      <li>Improve service quality and fix errors.</li>
+    </ul>
+
+    <h2><span class="ar-only">5. تخزين البيانات وحمايتها</span><span class="en-only">5. Data Storage & Security</span></h2>
+    <ul class="ar-only">
+      <li>تُخزَّن البيانات في ملفات JSON على سيرفر البوت الخاص (باستخدام Node.js).</li>
+      <li>الملفات المحفوظة: <code>users.json</code>، <code>database.json</code>، <code>blacklist.json</code>.</li>
+      <li>لا تُباع أو تُشارَك بياناتك مع أي طرف ثالث لأغراض تجارية.</li>
+      <li>الوصول إلى السيرفر مقتصر على فريق الإدارة العليا فقط.</li>
+    </ul>
+    <ul class="en-only">
+      <li>Data is stored in JSON files on a private server (Node.js).</li>
+      <li>Files: <code>users.json</code>, <code>database.json</code>, <code>blacklist.json</code>.</li>
+      <li>Data is never sold or shared with third parties for commercial purposes.</li>
+      <li>Access is restricted to senior staff only.</li>
+    </ul>
+
+    <h2><span class="ar-only">6. مشاركة البيانات مع أطراف ثالثة</span><span class="en-only">6. Third-Party Sharing</span></h2>
+    <p class="ar-only">لا نشارك بياناتك إلا في الحالات التالية:</p>
+    <p class="en-only">We do not share your data except in the following cases:</p>
+    <ul class="ar-only">
+      <li><strong>Discord:</strong> كما هو مطلوب لتشغيل البوت (إرسال الرسائل، منح الرتب).</li>
+      <li><strong>Roblox API:</strong> للتحقق من حسابك (لا يتم إرسال شيء غير اسم المستخدم).</li>
+      <li><strong>الجهات القانونية:</strong> إذا طُلب ذلك بموجب القانون.</li>
+    </ul>
+    <ul class="en-only">
+      <li><strong>Discord:</strong> as required for the Bot to function.</li>
+      <li><strong>Roblox API:</strong> to verify your account (username only).</li>
+      <li><strong>Legal authorities:</strong> if required by law.</li>
+    </ul>
+
+    <div class="highlight-green">
+      <strong class="ar-only">✅ لا نشارك:</strong>
+      <strong class="en-only">✅ We do NOT share:</strong>
+      <p class="ar-only">الاسم الحقيقي، العمر، إجابات الأسئلة، نص الحلف مع أي طرف ثالث خارج فريق إدارة BlackNight.</p>
+      <p class="en-only">real name, age, quiz answers, or oath text with any third party outside BlackNight's admin team.</p>
+    </div>
+
+    <h2><span class="ar-only">7. مدة الاحتفاظ بالبيانات</span><span class="en-only">7. Data Retention</span></h2>
+    <ul class="ar-only">
+      <li><strong>البيانات المؤقتة (الجلسات):</strong> تُحذف تلقائياً بعد 15 دقيقة من انتهاء الجلسة أو الإلغاء.</li>
+      <li><strong>بيانات التقديم المقبول:</strong> تُحفظ بشكل دائم لأغراض الأرشيف الإداري.</li>
+      <li><strong>بيانات التقديم المرفوض:</strong> تُحفظ مؤقتاً في السجل، وقد تُحذف دورياً.</li>
+      <li><strong>البلاك ليست:</strong> تُحفظ بشكل دائم لمنع الحسابات المرفوضة من التقديم مجدداً.</li>
+    </ul>
+    <ul class="en-only">
+      <li><strong>Session data:</strong> auto-deleted after 15 minutes.</li>
+      <li><strong>Approved applications:</strong> permanently archived.</li>
+      <li><strong>Rejected applications:</strong> kept temporarily, may be purged periodically.</li>
+      <li><strong>Blacklist:</strong> permanently stored.</li>
+    </ul>
+
+    <h2><span class="ar-only">8. حقوقك</span><span class="en-only">8. Your Rights</span></h2>
+    <p class="ar-only">لديك الحق في:</p>
+    <p class="en-only">You have the right to:</p>
+    <ul class="ar-only">
+      <li><strong>الوصول:</strong> طلب معرفة البيانات المحفوظة عنك.</li>
+      <li><strong>التصحيح:</strong> طلب تصحيح بيانات غير دقيقة.</li>
+      <li><strong>الحذف:</strong> طلب حذف بياناتك (باستثناء ما يجب حفظه قانونياً).</li>
+      <li><strong>الاعتراض:</strong> الاعتراض على معالجة بياناتك.</li>
+    </ul>
+    <ul class="en-only">
+      <li><strong>Access:</strong> request to know what data we store about you.</li>
+      <li><strong>Correction:</strong> request correction of inaccurate data.</li>
+      <li><strong>Deletion:</strong> request deletion of your data (except legally required).</li>
+      <li><strong>Objection:</strong> object to data processing.</li>
+    </ul>
+    <p class="ar-only">لتفعيل أي من هذه الحقوق، تواصل مع فريق الإدارة عبر سيرفر Discord الرسمي.</p>
+    <p class="en-only">To exercise any of these rights, contact the staff team on the official Discord server.</p>
+
+    <h2><span class="ar-only">9. خصوصية الأطفال</span><span class="en-only">9. Children's Privacy</span></h2>
+    <div class="danger">
+      <p class="ar-only">
+        البوت غير مخصص للأطفال تحت 13 عاماً. إذا اكتشفنا أن مستخدماً تحت هذا السن قد قدّم بياناته،
+        سنحذفها فوراً ونحظره من الاستخدام.
+      </p>
+      <p class="en-only">
+        The Bot is not intended for children under 13. If we discover a user under this age
+        submitted data, we will delete it immediately and ban them.
+      </p>
+    </div>
+
+    <h2><span class="ar-only">10. الكوكيز وملفات التتبع</span><span class="en-only">10. Cookies & Tracking</span></h2>
+    <p class="ar-only">
+      البوت <strong>لا يستخدم</strong> كوكيز أو أدوات تتبع في المتصفح. أي كوكي يتم استخدامه
+      هو كوكي Roblox (<code>.ROBLOSECURITY</code>) على سيرفر البوت فقط للاتصال بـ Roblox API،
+      ولا يتم مشاركته مع أي طرف.
+    </p>
+    <p class="en-only">
+      The Bot does <strong>not</strong> use browser cookies or tracking tools. The only cookie
+      used is the Roblox <code>.ROBLOSECURITY</code> cookie on the bot's server for API access,
+      and it is never shared.
+    </p>
+
+    <h2><span class="ar-only">11. التعديلات على سياسة الخصوصية</span><span class="en-only">11. Changes to Policy</span></h2>
+    <p class="ar-only">
+      قد نحدّث سياسة الخصوصية من وقت لآخر. سيتم نشر أي تعديلات على هذه الصفحة مع تحديث تاريخ
+      "آخر تحديث". استمرارك في استخدام البوت بعد التعديلات يُعد موافقة عليها.
+    </p>
+    <p class="en-only">
+      We may update this Privacy Policy from time to time. Updates will be posted on this page
+      with a new "Last Updated" date. Continued use constitutes acceptance.
+    </p>
+
+    <h2><span class="ar-only">12. التواصل</span><span class="en-only">12. Contact</span></h2>
+    <p class="ar-only">لأي استفسار بخصوص سياسة الخصوصية أو بياناتك، تواصل معنا:</p>
+    <p class="en-only">For inquiries about privacy or your data, contact us:</p>
+    <p><a href="https://discord.gg/blacknight" target="_blank">https://discord.gg/blacknight</a></p>
+
+  </div>
+  <!-- =============== END PRIVACY =================== -->
+
+  <div class="footer">
+    <span class="ar-only">© 2025 BlackNight Bot — جميع الحقوق محفوظة</span>
+    <span class="en-only">© 2025 BlackNight Bot — All Rights Reserved</span>
+  </div>
+
+</div>
+
+<script>
+  // ====== Tab Switching ======
+  function switchTab(tabName) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+    // Show selected
+    document.getElementById('tab-' + tabName).classList.add('active');
+    document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
+
+    // Update URL hash
+    history.replaceState(null, '', '#' + tabName);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ====== Language Switching ======
+  function setLang(lang) {
+    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+    if (lang === 'en') {
+      document.body.classList.add('lang-en');
+      document.documentElement.setAttribute('lang', 'en');
+      document.documentElement.setAttribute('dir', 'ltr');
+    } else {
+      document.body.classList.remove('lang-en');
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+
+    localStorage.setItem('bn_lang', lang);
+  }
+
+  // ====== On Page Load ======
+  window.addEventListener('DOMContentLoaded', () => {
+    // Restore language
+    const savedLang = localStorage.getItem('bn_lang');
+    if (savedLang) setLang(savedLang);
+
+    // Restore tab from URL
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'terms' || hash === 'privacy') {
+      switchTab(hash);
+    }
+  });
+</script>
+</body>
+</html>
